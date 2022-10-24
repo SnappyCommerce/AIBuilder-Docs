@@ -8,9 +8,9 @@ Se puede acceder a las distintas variables es con los siguientes prefijos:
 
 |  Variable   |  Prefijo |  Devuelve                                                                       |  Ejemplo               |
 | ----------- | -------- | ------------------------------------------------------------------------------- | ---------------------- |
-|  contexto   |     `$`  |  el valor del contexto                                                          |  `$hola` -> lo que tenga el contexto hola guardado
-|  intents    |      `#` |  valor entre 0 y 1 de la confianza que tuvo (por ahora siempre va a ser 0 o 1)  |  `#saludo` -> 1 si reconoce q es un saludo
-|  entity     |    `@`   |  El valor que reconoció como entidad (puede cambiar)                            | `@nombre`-> el nombre que le indicó el usuario
+|  contexto   |     `$`  |  el valor del contexto                                                          |  `$hola` -> lo que tenga el contexto hola guardado |
+|  intents    |      `#` |  valor entre 0 y 1 de la confianza que tuvo (por ahora siempre va a ser 0 o 1)  |  `#saludo` -> 1 si reconoce q es un saludo |
+|  entity     |    `@`   |  El valor que reconoció como entidad (puede cambiar)                            | `@nombre`-> el nombre que le indicó el usuario |
 ## Lógica
 Una condición será verdadera si devuelve un booleano en `true` (Esto puede ser obtenido usando operadores lógicos o con una variable con ese valor) o si devuelve un valor verdadero.
 Todos los valores verdaderos son los que no son falsos.
