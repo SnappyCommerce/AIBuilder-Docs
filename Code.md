@@ -12,6 +12,19 @@ Se puede acceder a las distintas variables es con los siguientes prefijos:
 |  intents    |      `#` |  valor entre 0 y 1 de la confianza que tuvo (por ahora siempre va a ser 0 o 1)  |  `#saludo` -> 1 si reconoce q es un saludo |
 |  entity     |    `@`   |  El valor que reconoció como entidad (puede cambiar)                            | `@nombre`-> el nombre que le indicó el usuario |
 
+## Objetos
+Se puede acceder a las propiedades de un objeto mediante el operador `.` entre dos identificadores.
+
+Por ejemplo, si tenemos un objeto llamado `$obj` con una propiedad `valor` podemos acceder escribiendo `$obj.valor`.
+
+También se puede acceder con la siguiente sintaxis: `identificador[string]` donde el identificador es el objeto a acceder y dentro de los corchetes le pasamos un string con el nombre de la propiedad.
+
+Para el ejemplo anterior se puede acceder de la siguiente manera `$obj['valor]` o `$obj["valor"]`.
+
+### Encadenamiento Opcional
+Hay casos en los que queremos acceder a una propiedad de un objeto pero no sabemos si este objeto en cuestión existe, por lo que se puede usar el operador de encadenamiento opcional (`?.`). Este operador devolverá el valor final o `undefined` si alguna de las propiedades de la cadena es `undefined`.
+
+Para el ejemplo anterior con el encadenamiento opcional se utilizaría de la siguiente manera `$obj?.valor` o `$obj?.['valor']`. En el caso de que `$obj` sea undefined esta expresión devolverá `undefined` sin tirar error.
 ## Lógica
 Una condición será verdadera si devuelve un booleano en `true` (Esto puede ser obtenido usando operadores lógicos o con una variable con ese valor) o si devuelve un valor verdadero.
 Todos los valores verdaderos son los que no son falsos.
