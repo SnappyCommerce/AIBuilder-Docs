@@ -11,6 +11,8 @@
 - - [Packages](./Nodes.md#packages)
 - [Package](./Package.md#package)
 - [Código](./Code.md#code)
+- - [Objetos](./Code.md#objetos)
+- - - [Encadenamiento Opcional](./Code.md#encadenamiento-opcional)
 - - [Lógica](./Code.md#lógica)
 - - [Operadores Lógicos](./Code.md#operadores-lógicos)
 - - [Operadores Aritméticos](./Code.md#operadores-aritméticos)
