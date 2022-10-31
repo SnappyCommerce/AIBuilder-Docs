@@ -26,3 +26,16 @@ Propiedades:
  
  Las entidades estáticas también contendrán una propiedad con el nombre de la opción que coincidió con el valor de `true`.
  Para el ejemplo anterior `@product.remera` devolverá `true`
+ 
+ ### Comportamiento
+ Como mencionamos previamente las entidades son objetos pero dependiendo el contexto su valor se puede transformar en la propiedad `value`.
+ Para el siguiente ejemplo, en el contexto se guardará la propiedad de value y no el objeto. De todos modos se puede aclarar que propiedad se desea guardar en el contexto.
+ ![image](https://user-images.githubusercontent.com/25674513/199065867-1c84642c-2dc0-4f55-94fe-a947456b6360.png)
+ 
+ En el caso de que la entidad esté intervenida por operaciones de `string` se transformará en `value`.
+ Siguiento con el ejemplo de la entidad `name` si yo tengo el siguiente código `"hola " + @name` Me devolverá un string que diga `hola ` seguido del nombre que reconoció la entidad.
+ 
+ 
+ 
+
+ 
