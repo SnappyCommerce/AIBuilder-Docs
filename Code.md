@@ -224,3 +224,39 @@ isValid(0) // true
 isValid() // false
 ```
 
+### String
+**string(val: any): string** 
+Parsea un valor a un string
+
+```js
+string(10) // "10"
+string(true) // "true"
+string("hola") // "hola"
+```
+### Contains
+**contains(arr: array, value: any): boolean**
+Verifica si determinado valor se encuentra en un arreglo
+
+```js
+contains([1,2,3], 3) // true
+contains(["a", "b", "c"], "b") // true
+contains([1,2,3], 5) // false
+```
+### Append
+**append(arr: array, value: any): array**
+Devuelve un nuevo arreglo con todos los items del arreglo dado mas el nuevo valor al final
+
+```js
+append([1,2,3], 4) // [1,2,3,4]
+```
+
+
+### Join
+**join(arr: array, separator?: string**
+Devuelve un string con todos los items del arreglo unidos separados por el separador que se le haya dado
+
+```js
+join([1,2,3,4]) // "1234"
+join([1,2,3,4], ", ") // "1, 2, 3, 4"
+join([1,2,3,4], " mas ") // "1 mas 2 mas 3 mas 4"
+```
