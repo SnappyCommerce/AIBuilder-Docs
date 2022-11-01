@@ -25,6 +25,9 @@ Para el ejemplo anterior se puede acceder de la siguiente manera `$obj['valor]` 
 Hay casos en los que queremos acceder a una propiedad de un objeto pero no sabemos si este objeto en cuestión existe, por lo que se puede usar el operador de encadenamiento opcional (`?.`). Este operador devolverá el valor final o `undefined` si alguna de las propiedades de la cadena es `undefined`.
 
 Para el ejemplo anterior con el encadenamiento opcional se utilizaría de la siguiente manera `$obj?.valor` o `$obj?.['valor']`. En el caso de que `$obj` sea undefined esta expresión devolverá `undefined` sin tirar error.
+
+Tambien se puede encadenar infinitamente: `$obj?.foo?.bar?.test?.['wiii']`
+
 ## Lógica
 Una condición será verdadera si devuelve un booleano en `true` (Esto puede ser obtenido usando operadores lógicos o con una variable con ese valor) o si devuelve un valor verdadero.
 Todos los valores verdaderos son los que no son falsos.
