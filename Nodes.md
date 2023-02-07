@@ -46,11 +46,22 @@ Los nodos dentro de la carpeta solamente serán evaluados si la condición fue v
 ## Packages
 Los nodos de tipo Package son referencias a otros brains, específicamente de tipo Package. Por defecto su condición será siempre `true` a no ser que se especifique lo contrario.
 
-Este nodo al ser procesado correrá en una instancia aislada la lógica del package y evaluará todos sus nodos y en caso de ser necesario los procesará. Si la primera vez que se procesa el `package` ninguno de los nodos del package fue procesado seguirá evaluando los siguientes nodos del brain actual.
+Este nodo será procesado y evaluado en una instancia aislada. Solamente se procesará el contenido si la condición del nodo es verdadera y si al evaluar el contenido del paquete algun nodo del mismo devuelve verdadero.
 
-Si hubo respuesta, el package tomará el control del brain hasta que el package no procese ningún nodo. Cuando finalize el package el brain evaluará los siguientes nodos al package.
+Una vez que se entra a un paquete este tomará el control, la única manera de devolverle el control al `brain` principal es si el paquete entra en un nodo de [Exit Package](./Nodes.md#exit-package) o si al evaluar ningún nodo devuelve verdadero.
+
+Si el paquete sale mediante un nodo de [Exit Package](./Nodes.md#exit-package) instantaneamente se evaluarán los nodos hijos del nodo del paquete.
+
 
 Se puede acceder al contexto interno del package mediante `$internal.packages.UUID_DEL_NODO`.
 > **NOTE:** NO es recomendado usar la versión de `development` de un package
 
 Para mas info de los packages leer la sección de [Package](./Package.md#package).
+### Context Mapping
+La configuración de context mapping en un nodo de tipo package sirve para mapear un contexto del paquete en cuestión a un contexto del brain.
+Es decir, el valor indicado del contexto del paquete se replicará en el contexto del brain que se le indique.
+
+## Exit Package
+Este es un nodo que solo puede ser utilizado dentro de un paquete. Cuando su condición es verdadera le indica al paquete que debe devolverle el control al `brain` principal.
+
+Al usar este nodo se evaluarán los nodos hijos del nodo de tipo package.
