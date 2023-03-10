@@ -266,13 +266,128 @@ Devuelve un nuevo arreglo con todos los items del arreglo dado mas el nuevo valo
 append([1,2,3], 4) // [1,2,3,4]
 ```
 
-
 ### Join
-**join(arr: array, separator?: string**
+**join(arr: array, separator?: string): array**
 Devuelve un string con todos los items del arreglo unidos separados por el separador que se le haya dado
 
 ```js
 join([1,2,3,4]) // "1234"
 join([1,2,3,4], ", ") // "1, 2, 3, 4"
 join([1,2,3,4], " mas ") // "1 mas 2 mas 3 mas 4"
+```
+
+### Now
+**now(): number**
+Devuelve los milisegundos de la fecha y horario actual basado en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
+
+
+### Date
+**date(value: string | number): number**
+Devuelve los milisegundos de una fecha dada basados en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
+`value` puede ser un string con cualquier formato de fecha.
+```js
+date('December 17, 1995 03:24:00') // 819181440000 (17 de Diciembre de 1995 a las 03:24:00 UTC-00)
+date('1995-12-17T03:24:00') // 819181440000 (17 de Diciembre de 1995 a las 03:24:00 UTC-00)
+date('12/17/1995') // 819169200000 (17 de Diciembre de 1995 a las 03:24:00 UTC-00)
+```
+
+### FormatDate
+**formatDate(timestamp: number, format: string): string**
+Devuelve un string con el timestamp formateado con el formato dado
+Para establecer el formato se utiliza el standard [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
+
+
+```js
+formatDate(date('1995-12-17T03:24:00'), 'dd/MM/yyyy HH:mm:SS') // "17/12/1995 03:24:00"
+
+formatDate(date('1995-12-17T03:24:00'), 'MMMM') // "December"
+```
+
+
+### Replace
+**relpace(str: string, replacer:string, newValue: string, regexModifiers?: string ): string**
+Devuelve un nuevo remplazando de str las ocurrencias del `replacer` con el `newValue`. El replacer puede ser regex.
+El `regexModifiers` es un string dónde se puede indicar cualquier combinación de un [regex flag](https://www.codeguage.com/courses/regexp/flags)
+
+
+```js
+replace('hola mundo', 'mundo', 'país') // "hola país"
+
+replace('hola 2023', '[0-9]', '*') // "hola *023"
+replace('hola 2023', '[0-9]', '*', 'g') // "hola ****"
+
+replace('Hola chau hola chau hola', 'hola', 'hello') // "Hola chau hello chau hola"
+replace('Hola chau hola chau hola', 'hola', 'hello', 'i') // "hello chau hola chau hola"
+replace('Hola chau hola chau hola', 'hola', 'hello', 'ig') // "hello chau hello chau hello"
+```
+
+### StartsWith
+**startsWith(value: string, search: string): boolean**
+Devuelve un boolean que indica si el value empieza con search
+
+```js
+startsWith('hola mundo', 'hola') // true
+startsWith('hola mundo', 'mundo') // false
+```
+
+### EndsWith
+**endsWidth(value: string, search: string): boolean**
+Devuelve un boolean que indica si el value termina con search
+
+```js
+startsWith('hola mundo', 'mundo') // true
+startsWith('hola mundo', 'hola') // false
+```
+
+### IndexOf
+**indexOf(arr: array, value: any): number**
+Devuelve el índice del valor en el arreglo. Si no lo encuentra devuelve -1
+
+```js
+indexOf([1,2,3], 2) // 1
+indexOf([1,2,3], 4) // -1
+```
+
+### IndexOfStr
+**indexOfStr(str: string, search: string): number**
+Devuelve el índice de la primera ocurrencia de search en str. Si no lo encuentra devuelve -1
+
+```js
+indexOfStr('hola mundo', 'mundo') // 5
+indexOfStr('hola mundo', 'hola') // 0
+indexOfStr('hola mundo', 'chau') // -1
+```
+
+### ContainsStr
+**containsStr(str: string, search: string): boolean**
+Devuelve un boolean que indica si el str contiene search
+
+```js
+containsStr('hola mundo', 'mundo') // true
+containsStr('hola mundo', 'hola') // true
+containsStr('hola mundo', 'chau') // false
+```
+
+### Keys
+**keys(obj: object): array**
+Devuelve un arreglo con todas las keys del objeto
+
+```js
+keys({a: 1, b: 2, c: 3}) // ["a", "b", "c"]
+```
+### Remove
+**remove(arr: array, index: number): array**
+Devuelve un nuevo arreglo sin el item en el índice dado
+
+```js
+remove([1,2,3], 1) // [1,3]
+remove([1,2,3], 0) // [2,3]
+```
+
+### RemoveValues
+**removeValues(arr: array, value: any): array**
+Devuelve un nuevo arreglo sin los items que coincidan con el valor dado
+
+```js
+removeValues([1,2,3,1,2,3], 1) // [2,3,2,3]
 ```

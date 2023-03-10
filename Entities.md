@@ -34,8 +34,4 @@ Para el siguiente ejemplo, en el contexto se guardará la propiedad de value y n
  
 En el caso de que la entidad esté intervenida por operaciones de `string` se transformará en `value`.
 Siguiento con el ejemplo de la entidad `name` si yo tengo el siguiente código `"hola " + @name` Me devolverá un string que diga `hola ` seguido del nombre que reconoció la entidad.
- 
- 
- 
 
- 
