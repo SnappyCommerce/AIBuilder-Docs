@@ -276,6 +276,15 @@ join([1,2,3,4], ", ") // "1, 2, 3, 4"
 join([1,2,3,4], " mas ") // "1 mas 2 mas 3 mas 4"
 ```
 
+### JoinArr
+**joinArr(arr1: array, arr2: array): array**
+Une dos arreglos en uno
+
+```js
+join([1,2,3,4], [5,6,7,8]) // [1,2,3,4,5,6,7,8]
+join([1,2,3,4], ["5", "6", "7"]) // [1,2,3,4,"5","6", "7"]
+```
+
 ### Now
 **now(): number**
 Devuelve los milisegundos de la fecha y horario actual basado en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
