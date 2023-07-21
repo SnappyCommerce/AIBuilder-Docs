@@ -23,6 +23,7 @@
 - [Deploy](./Deploy.md#deploy)
 - [Versions](./Versions.md#versions)
 - [ChatTester](./ChatTester.md#chat-tester)
+- [Translations](./Translation.md#translations)
 
 ## Notas:
   - Es probable que las entities dinámicas a veces funcionen medio raro. Si se encuentran con alguno de estos casos por favor mandar el JSON del brain.
