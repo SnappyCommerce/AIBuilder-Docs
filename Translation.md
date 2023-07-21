@@ -1,5 +1,6 @@
 # Traducciones
 El builder cuenta con una sección dedicada a las traducciones, donde es posible establecer diferentes idiomas para el bot.
+Para definit el idioma se puede usar la opcón `locale` de las opciones de la función o definir el contexto `$language` con el idioma deseado.
 
 
 ## Idiomas (Locales)
