@@ -192,6 +192,24 @@ substring("hola", 2) // "la"
 substring("hola como estas", 2, 7) // "la co"
 ```
 
+### StartsWith
+**startsWith(value: string, search: string): boolean**
+Devuelve un boolean que indica si el value empieza con search
+
+```js
+startsWith('hola mundo', 'hola') // true
+startsWith('hola mundo', 'mundo') // false
+```
+
+### EndsWith
+**endsWidth(value: string, search: string): boolean**
+Devuelve un boolean que indica si el value termina con search
+
+```js
+endsWith('hola mundo', 'mundo') // true
+endsWith('hola mundo', 'hola') // false
+```
+
 ### ToLowerCase
 **toLowerCase(str: string): string**
 Transforma un string todo a minúscula.
@@ -206,6 +224,16 @@ Transforma un string todo a mayúscula.
 ```js
 toLowerCase("Hola Como Estas") // "HOLA COMO ESTAS"
 toLowerCase("hola como estas") // "HOLA COMO ESTAS"
+```
+
+### String
+**string(val: any): string** 
+Parsea un valor a un string
+
+```js
+string(10) // "10"
+string(true) // "true"
+string("hola") // "hola"
 ```
 
 ### Number
@@ -240,15 +268,6 @@ isValid(0) // true
 isValid() // false
 ```
 
-### String
-**string(val: any): string** 
-Parsea un valor a un string
-
-```js
-string(10) // "10"
-string(true) // "true"
-string("hola") // "hola"
-```
 ### Contains
 **contains(arr: array, value: any): boolean**
 Verifica si determinado valor se encuentra en un arreglo
@@ -330,24 +349,6 @@ replace('Hola chau hola chau hola', 'hola', 'hello', 'i') // "hello chau hola ch
 replace('Hola chau hola chau hola', 'hola', 'hello', 'ig') // "hello chau hello chau hello"
 ```
 
-### StartsWith
-**startsWith(value: string, search: string): boolean**
-Devuelve un boolean que indica si el value empieza con search
-
-```js
-startsWith('hola mundo', 'hola') // true
-startsWith('hola mundo', 'mundo') // false
-```
-
-### EndsWith
-**endsWidth(value: string, search: string): boolean**
-Devuelve un boolean que indica si el value termina con search
-
-```js
-startsWith('hola mundo', 'mundo') // true
-startsWith('hola mundo', 'hola') // false
-```
-
 ### IndexOf
 **indexOf(arr: array, value: any): number**
 Devuelve el índice del valor en el arreglo. Si no lo encuentra devuelve -1
@@ -399,4 +400,73 @@ Devuelve un nuevo arreglo sin los items que coincidan con el valor dado
 
 ```js
 removeValues([1,2,3,1,2,3], 1) // [2,3,2,3]
+```
+
+### ToJSON
+**toJSON(str: string): object**
+Parsea un string a un objecto.
+```js
+toJSON('{ "foo": "bar" }') // { "foo": "bar" }
+```
+
+### Find
+**find(arr: array, path: string, value: any): any**
+Busca en un arreglo de objetos el primer valor que tenga en el path especificado el mismo valor
+
+```js
+arr = [
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chau'
+		}
+	},
+	{
+		foo: 'holiwis',
+		bar: {
+			baz: 'chauchis'
+		}
+	},
+	{
+		foo: 'holanda',
+		bar: {
+			baz: 'chaucha'
+		}
+	}
+]
+
+find(arr, 'foo', 'holiwis') // { "foo": "holiwis", "bar": { "baz": "chauchis" } }
+find(arr, 'bar.baz', 'chaucha') // { "foo": "holanda", "bar": { "baz": "chaucha" } }
+find(arr, 'pepe', 'jose') // null
+find(arr, 'foo', 'foo') // null
+```
+### Filter
+**Find(arr: array, path: string, value: any): any[]**
+Devuelve un arreglo con todos los items que matchean en el path el valor especificado
+```js
+arr = [
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chau'
+		}
+	},
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chauchis'
+		}
+	},
+	{
+		foo: 'holanda',
+		bar: {
+			baz: 'chauchis'
+		}
+	}
+]
+
+find(arr, 'foo', 'hola') // [{ "foo": "hola", "bar": { "baz": "chau" } }, { "foo": "hola", "bar": { "baz": "chauchis" } }]
+find(arr, 'bar.baz', 'chauchis') //  [{ "foo": "hola", "bar": { "baz": "chauchis" } }, { "foo": "holanda", "bar": { "baz": "chauchis" } }]
+find(arr, 'pepe', 'jose') // []
+find(arr, 'foo', 'foo') // []
 ```
