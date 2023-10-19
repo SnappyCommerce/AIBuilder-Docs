@@ -20,6 +20,7 @@
 - [Intents](./Intents.md#intents)
 - [Entities](./Entities.md#entities)
 - [Contextos](./Contexts.md#contextos)
+- [Secrets](./Secrets.md#secrets)
 - [Deploy](./Deploy.md#deploy)
 - [Versions](./Versions.md#versions)
 - [ChatTester](./ChatTester.md#chat-tester)
