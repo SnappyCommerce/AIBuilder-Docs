@@ -16,6 +16,7 @@
 - - [Lógica](./Code.md#lógica)
 - - [Operadores Lógicos](./Code.md#operadores-lógicos)
 - - [Operadores Aritméticos](./Code.md#operadores-aritméticos)
+- - [Funciones Anónimas](./Code.md#funciones-anónimas)
 - - [Funciones](./Code.md#funciones)
 - [Intents](./Intents.md#intents)
 - [Entities](./Entities.md#entities)

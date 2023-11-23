@@ -173,6 +173,18 @@ El operador "potencia" se puede utilizar con el caracter `^` entre dos valores. 
 (2 ^ 3) ^ 2 // 64
 ```
 
+## Funciones Anónimas
+Se pueden definir funciones anónimas para pasarlas como parámetro dentro de otra función.
+Para definir una función anónima se utiliza la palabra reservada `fn` seguido de los parámetros que puede recibir entre paréntesis y luego lo que devuelve la función nuevamente entre paréntesis
+
+En el siguiente ejemplo es una función anónima que suma los dos parametros que recibe.
+```
+fn(parameter1, parameter2)(parameter1 + parameter2)
+```
+
+Dentro de la función se pueden acceder a variables externas.
+Los parámetros solamente existen dentro de la función no importa si colisiona con otras variables.
+
 ## Funciones
 
 ### Random
@@ -440,8 +452,58 @@ find(arr, 'bar.baz', 'chaucha') // { "foo": "holanda", "bar": { "baz": "chaucha"
 find(arr, 'pepe', 'jose') // null
 find(arr, 'foo', 'foo') // null
 ```
+
+### FindV2
+**findV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item | undefined**
+Devuelve el primer elemento que satisfaga la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá `undefined`.
+
+El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+
+```js
+arr = [
+	   {
+      "id": 1,
+      "age": 30,
+      "lastName": "Doe",
+      "firstName": "John",
+      "occupation": "Engineer"
+   },
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+   {
+      "id": 3,
+      "age": 40,
+      "lastName": "Johnson",
+      "firstName": "Robert",
+      "occupation": "Doctor"
+   },
+]
+
+findV2(arr, fn(person)(person.lastName == 'Smith'))
+/* Output:
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+*/
+
+findV2(arr, fn(person)(person.lastName == 'Silva')) // Output: undefined
+
+```
+
+
+
 ### Filter
-**Find(arr: array, path: string, value: any): any[]**
+**filter(arr: array, path: string, value: any): any[]**
 Devuelve un arreglo con todos los items que matchean en el path el valor especificado
 ```js
 arr = [
@@ -469,4 +531,128 @@ find(arr, 'foo', 'hola') // [{ "foo": "hola", "bar": { "baz": "chau" } }, { "foo
 find(arr, 'bar.baz', 'chauchis') //  [{ "foo": "hola", "bar": { "baz": "chauchis" } }, { "foo": "holanda", "bar": { "baz": "chauchis" } }]
 find(arr, 'pepe', 'jose') // []
 find(arr, 'foo', 'foo') // []
+```
+### FilterV2 
+**filterV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item[]**
+Devuelve un nuevo arreglo con todos los items que satisfagan la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá un arreglo vacío.
+
+El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+
+```js
+arr = [
+   {
+      "id": 1,
+      "age": 30,
+      "lastName": "Doe",
+      "firstName": "John",
+      "occupation": "Engineer"
+   },
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+   {
+      "id": 3,
+      "age": 40,
+      "lastName": "Johnson",
+      "firstName": "Robert",
+      "occupation": "Doctor"
+   },
+   {
+      "id": 4,
+      "age": 22,
+      "lastName": "Williams",
+      "firstName": "Emily",
+      "occupation": "Student"
+   },
+   {
+      "id": 5,
+      "age": 35,
+      "lastName": "Brown",
+      "firstName": "Michael",
+      "occupation": "Marketing Manager"
+   }
+]
+
+filterV2(arr, fn(person)(person.age > 25))
+/* Output:
+[
+  {
+    "id": 1,
+    "age": 30,
+    "lastName": "Doe",
+    "firstName": "John",
+    "occupation": "Engineer"
+  },
+  {
+    "id": 3,
+    "age": 40,
+    "lastName": "Johnson",
+    "firstName": "Robert",
+    "occupation": "Doctor"
+  },
+  {
+    "id": 5,
+    "age": 35,
+    "lastName": "Brown",
+    "firstName": "Michael",
+    "occupation": "Marketing Manager"
+  }
+]
+*/
+```
+
+
+### Map
+**map\<Item>(arr: Item[], parseFunc: (item: Item, index: number, originalArr: Item[]) => any): any[]**
+Devuelve un nuevo arreglo con todos los items parseados por la función proveida.
+
+El parametro parseFunc es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+```js
+arr = [
+   {
+	  "id": 1,
+	  "age": 30,
+	  "lastName": "Doe",
+	  "firstName": "John",
+	  "occupation": "Engineer"
+   },
+   {
+	  "id": 2,
+	  "age": 25,
+	  "lastName": "Smith",
+	  "firstName": "Jane",
+	  "occupation": "Teacher"
+   },
+   {
+	  "id": 3,
+	  "age": 40,
+	  "lastName": "Johnson",
+	  "firstName": "Robert",
+	  "occupation": "Doctor"
+   },
+   {
+	  "id": 4,
+	  "age": 22,
+	  "lastName": "Williams",
+	  "firstName": "Emily",
+	  "occupation": "Student"
+   },
+   {
+	  "id": 5,
+	  "age": 35,
+	  "lastName": "Brown",
+	  "firstName": "Michael",
+	  "occupation": "Marketing Manager"
+   }
+]
+
+map(arr, fn(person)(person.firstName + ' ' + person.lastName))
+// Output: ["John Doe", "Jane Smith", "Robert Johnson", "Emily Williams", "Michael Brown"]
+
 ```
