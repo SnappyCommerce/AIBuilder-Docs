@@ -178,7 +178,7 @@ Se pueden definir funciones anónimas para pasarlas como parámetro dentro de ot
 Para definir una función anónima se utiliza la palabra reservada `fn` seguido de los parámetros que puede recibir entre paréntesis y luego lo que devuelve la función nuevamente entre paréntesis
 
 En el siguiente ejemplo es una función anónima que suma los dos parametros que recibe.
-```
+```js
 fn(parameter1, parameter2)(parameter1 + parameter2)
 ```
 
@@ -189,6 +189,7 @@ Los parámetros solamente existen dentro de la función no importa si colisiona 
 
 ### Random
 **rnd(max=100, min=0): number**
+
 Devuelve un valor aleatorio entre un mínimo y un máximo (Ambos incluídos)
 ```js
 rnd() // Valor aleatorio entre 0 y 100
@@ -198,6 +199,7 @@ rnd(10, 5) // Valor aleatorio entre 5 y 10
 
 ### Substring
 **substring(str: string, start: number, end?: number): string**
+
 Devuelve parte del String entre start y end o hasta el final del string si el parámetro end es `null` o `undefined`
 ```js
 substring("hola", 2) // "la"
@@ -206,6 +208,7 @@ substring("hola como estas", 2, 7) // "la co"
 
 ### StartsWith
 **startsWith(value: string, search: string): boolean**
+
 Devuelve un boolean que indica si el value empieza con search
 
 ```js
@@ -215,6 +218,7 @@ startsWith('hola mundo', 'mundo') // false
 
 ### EndsWith
 **endsWidth(value: string, search: string): boolean**
+
 Devuelve un boolean que indica si el value termina con search
 
 ```js
@@ -224,6 +228,7 @@ endsWith('hola mundo', 'hola') // false
 
 ### ToLowerCase
 **toLowerCase(str: string): string**
+
 Transforma un string todo a minúscula.
 ```js
 toLowerCase("Hola Como Estas") // "hola como estas"
@@ -232,6 +237,7 @@ toLowerCase("HOLA COMO ESTAS") // "hola como estas"
 
 ### toUpperCase
 **toUpperCase(str: string): string**
+
 Transforma un string todo a mayúscula.
 ```js
 toLowerCase("Hola Como Estas") // "HOLA COMO ESTAS"
@@ -240,6 +246,7 @@ toLowerCase("hola como estas") // "HOLA COMO ESTAS"
 
 ### String
 **string(val: any): string** 
+
 Parsea un valor a un string
 
 ```js
@@ -250,6 +257,7 @@ string("hola") // "hola"
 
 ### Number
 **Number(val: any): number**
+
 Intenta transformar cualquier valor a un número
 Si no lo logra devolverá `NaN` (Not a Number)
 ```js
@@ -259,6 +267,7 @@ Number("hola") // NaN
 ```
 ### Typeof
 **typeof(val: any): string**
+
 Devuelve el tipo de dato del valor dado
 puede devolver: `number`, `string`, `object`, `array`, `boolean`, `undefined`, `function`
 ```js
@@ -272,6 +281,7 @@ typeof(typeof) // "function"
 
 ### IsValid
 **isValid(val: any): boolean**
+
 Devuelve si un valor está definido o no. Es decir, si no es `null` ni `undefined`.
 Se puede utilizar para verificar si un contexto está definido o no.
 ```js
@@ -282,6 +292,7 @@ isValid() // false
 
 ### Contains
 **contains(arr: array, value: any): boolean**
+
 Verifica si determinado valor se encuentra en un arreglo
 
 ```js
@@ -291,6 +302,7 @@ contains([1,2,3], 5) // false
 ```
 ### Append
 **append(arr: array, value: any): array**
+
 Devuelve un nuevo arreglo con todos los items del arreglo dado mas el nuevo valor al final
 
 ```js
@@ -299,6 +311,7 @@ append([1,2,3], 4) // [1,2,3,4]
 
 ### Join
 **join(arr: array, separator?: string): array**
+
 Devuelve un string con todos los items del arreglo unidos separados por el separador que se le haya dado
 
 ```js
@@ -309,6 +322,7 @@ join([1,2,3,4], " mas ") // "1 mas 2 mas 3 mas 4"
 
 ### JoinArr
 **joinArr(arr1: array, arr2: array): array**
+
 Une dos arreglos en uno
 
 ```js
@@ -318,11 +332,13 @@ join([1,2,3,4], ["5", "6", "7"]) // [1,2,3,4,"5","6", "7"]
 
 ### Now
 **now(): number**
+
 Devuelve los milisegundos de la fecha y horario actual basado en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
 
 
 ### Date
 **date(value: string | number): number**
+
 Devuelve los milisegundos de una fecha dada basados en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
 `value` puede ser un string con cualquier formato de fecha.
 ```js
@@ -333,6 +349,7 @@ date('12/17/1995') // 819169200000 (17 de Diciembre de 1995 a las 03:24:00 UTC-0
 
 ### FormatDate
 **formatDate(timestamp: number, format: string): string**
+
 Devuelve un string con el timestamp formateado con el formato dado
 Para establecer el formato se utiliza el standard [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
 
@@ -346,6 +363,7 @@ formatDate(date('1995-12-17T03:24:00'), 'MMMM') // "December"
 
 ### Replace
 **relpace(str: string, replacer:string, newValue: string, regexModifiers?: string ): string**
+
 Devuelve un nuevo remplazando de str las ocurrencias del `replacer` con el `newValue`. El replacer puede ser regex.
 El `regexModifiers` es un string dónde se puede indicar cualquier combinación de un [regex flag](https://www.codeguage.com/courses/regexp/flags)
 
@@ -363,6 +381,7 @@ replace('Hola chau hola chau hola', 'hola', 'hello', 'ig') // "hello chau hello 
 
 ### IndexOf
 **indexOf(arr: array, value: any): number**
+
 Devuelve el índice del valor en el arreglo. Si no lo encuentra devuelve -1
 
 ```js
@@ -372,6 +391,7 @@ indexOf([1,2,3], 4) // -1
 
 ### IndexOfStr
 **indexOfStr(str: string, search: string): number**
+
 Devuelve el índice de la primera ocurrencia de search en str. Si no lo encuentra devuelve -1
 
 ```js
@@ -382,6 +402,7 @@ indexOfStr('hola mundo', 'chau') // -1
 
 ### ContainsStr
 **containsStr(str: string, search: string): boolean**
+
 Devuelve un boolean que indica si el str contiene search
 
 ```js
@@ -392,6 +413,7 @@ containsStr('hola mundo', 'chau') // false
 
 ### Keys
 **keys(obj: object): array**
+
 Devuelve un arreglo con todas las keys del objeto
 
 ```js
@@ -399,6 +421,7 @@ keys({a: 1, b: 2, c: 3}) // ["a", "b", "c"]
 ```
 ### Remove
 **remove(arr: array, index: number): array**
+
 Devuelve un nuevo arreglo sin el item en el índice dado
 
 ```js
@@ -408,6 +431,7 @@ remove([1,2,3], 0) // [2,3]
 
 ### RemoveValues
 **removeValues(arr: array, value: any): array**
+
 Devuelve un nuevo arreglo sin los items que coincidan con el valor dado
 
 ```js
@@ -416,6 +440,7 @@ removeValues([1,2,3,1,2,3], 1) // [2,3,2,3]
 
 ### ToJSON
 **toJSON(str: string): object**
+
 Parsea un string a un objecto.
 ```js
 toJSON('{ "foo": "bar" }') // { "foo": "bar" }
@@ -423,6 +448,7 @@ toJSON('{ "foo": "bar" }') // { "foo": "bar" }
 
 ### Find
 **find(arr: array, path: string, value: any): any**
+
 Busca en un arreglo de objetos el primer valor que tenga en el path especificado el mismo valor
 
 ```js
@@ -455,7 +481,9 @@ find(arr, 'foo', 'foo') // null
 
 ### FindV2
 **findV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item | undefined**
+
 Devuelve el primer elemento que satisfaga la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá `undefined`.
+
 
 El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
 
@@ -504,6 +532,7 @@ findV2(arr, fn(person)(person.lastName == 'Silva')) // Output: undefined
 
 ### Filter
 **filter(arr: array, path: string, value: any): any[]**
+
 Devuelve un arreglo con todos los items que matchean en el path el valor especificado
 ```js
 arr = [
@@ -534,6 +563,7 @@ find(arr, 'foo', 'foo') // []
 ```
 ### FilterV2 
 **filterV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item[]**
+
 Devuelve un nuevo arreglo con todos los items que satisfagan la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá un arreglo vacío.
 
 El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
@@ -609,6 +639,7 @@ filterV2(arr, fn(person)(person.age > 25))
 
 ### Map
 **map\<Item>(arr: Item[], parseFunc: (item: Item, index: number, originalArr: Item[]) => any): any[]**
+
 Devuelve un nuevo arreglo con todos los items parseados por la función proveida.
 
 El parametro parseFunc es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
