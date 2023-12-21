@@ -12,6 +12,8 @@
 - [Package](./Package.md#package)
 - [Código](./Code.md#code)
 - - [Objetos](./Code.md#objetos)
+- - - [Definir Objetos](./Code.md#definir-objetos)
+- - - - [Propiedades computadas](./Code.md#propiedades-computadas)
 - - - [Encadenamiento Opcional](./Code.md#encadenamiento-opcional)
 - - [Lógica](./Code.md#lógica)
 - - [Operadores Lógicos](./Code.md#operadores-lógicos)

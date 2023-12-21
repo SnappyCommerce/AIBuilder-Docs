@@ -21,6 +21,40 @@ También se puede acceder con la siguiente sintaxis: `identificador[string]` don
 
 Para el ejemplo anterior se puede acceder de la siguiente manera `$obj['valor]` o `$obj["valor"]`.
 
+### Definir Objetos
+Se puede definir un objeto poniendo las propiedades entre llaves `{}` separadas por comas `,` y cada propiedad se define con el nombre de la propiedad seguido de dos puntos `:` y el valor de la propiedad.
+Las propiedades deben ser `strings`.
+
+```js
+{
+   "propiedad1": "valor1",
+   'propiedad2': 10,
+   "propiedad3": true
+}
+```
+
+### Propiedades Computadas
+Las propiedades computadas permiten definir propiedades de un objeto con un nombre dinámico. Permite replazar el nombre de la propiedad por una expresión que devuelva un string al momento de definir el objeto.
+Para definirlo se utiliza la siguiente sintaxis: `[expresion]: valor`
+
+```js
+property = 'nombre'
+
+{
+   [property]: "valor1",
+   [property + '1']: 10,
+   "normal": true
+}
+/* Output:
+{
+   "nombre": "valor1",
+   "nombre1": 10,
+   "normal": true
+}
+*/
+```
+
+
 ### Encadenamiento Opcional
 Hay casos en los que queremos acceder a una propiedad de un objeto pero no sabemos si este objeto en cuestión existe, por lo que se puede usar el operador de encadenamiento opcional (`?.`). Este operador devolverá el valor final o `undefined` si alguna de las propiedades de la cadena es `undefined`.
 
