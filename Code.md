@@ -400,3 +400,28 @@ Devuelve un nuevo arreglo sin los items que coincidan con el valor dado
 ```js
 removeValues([1,2,3,1,2,3], 1) // [2,3,2,3]
 ```
+
+### MergeObj
+**mergeObj(obj1: object, obj2: object, multilevel?: boolean): object**
+Une dos objetos en uno. Si ambos objetos tienen la misma propiedad, el valor del segundo objeto sobreescribe el valor del primero.
+Si el parámetro `multilevel` es `true` se unirán los objetos de forma recursiva. Por defecto es `false`.
+
+```js
+obj1 = {
+	foo: 1,
+	bar: "hello world",
+	biz: {
+		foo: 3,
+	}
+}
+obj2 = {
+	bar: "hola mundo",
+	new: "new value",
+	biz: {
+		bar: ":D",
+	}
+}
+
+mergeObj(obj1, obj2) // {foo: 1, bar: "hola mundo", biz: {bar: ":D"}, new: "new value"}
+mergeObj(obj1, obj2, true)  // {foo: 1, bar: "hola mundo", biz: {foo: 3, bar: ":D"}, new: "new value"}
+```
