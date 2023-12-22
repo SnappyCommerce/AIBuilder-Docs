@@ -21,6 +21,40 @@ También se puede acceder con la siguiente sintaxis: `identificador[string]` don
 
 Para el ejemplo anterior se puede acceder de la siguiente manera `$obj['valor]` o `$obj["valor"]`.
 
+### Definir Objetos
+Se puede definir un objeto poniendo las propiedades entre llaves `{}` separadas por comas `,` y cada propiedad se define con el nombre de la propiedad seguido de dos puntos `:` y el valor de la propiedad.
+Las propiedades deben ser `strings`.
+
+```js
+{
+   "propiedad1": "valor1",
+   'propiedad2': 10,
+   "propiedad3": true
+}
+```
+
+### Propiedades Computadas
+Las propiedades computadas permiten definir propiedades de un objeto con un nombre dinámico. Permite replazar el nombre de la propiedad por una expresión que devuelva un string al momento de definir el objeto.
+Para definirlo se utiliza la siguiente sintaxis: `[expresion]: valor`
+
+```js
+property = 'nombre'
+
+{
+   [property]: "valor1",
+   [property + '1']: 10,
+   "normal": true
+}
+/* Output:
+{
+   "nombre": "valor1",
+   "nombre1": 10,
+   "normal": true
+}
+*/
+```
+
+
 ### Encadenamiento Opcional
 Hay casos en los que queremos acceder a una propiedad de un objeto pero no sabemos si este objeto en cuestión existe, por lo que se puede usar el operador de encadenamiento opcional (`?.`). Este operador devolverá el valor final o `undefined` si alguna de las propiedades de la cadena es `undefined`.
 
@@ -173,10 +207,23 @@ El operador "potencia" se puede utilizar con el caracter `^` entre dos valores. 
 (2 ^ 3) ^ 2 // 64
 ```
 
+## Funciones Anónimas
+Se pueden definir funciones anónimas para pasarlas como parámetro dentro de otra función.
+Para definir una función anónima se utiliza la palabra reservada `fn` seguido de los parámetros que puede recibir entre paréntesis y luego lo que devuelve la función nuevamente entre paréntesis
+
+En el siguiente ejemplo es una función anónima que suma los dos parametros que recibe.
+```js
+fn(parameter1, parameter2)(parameter1 + parameter2)
+```
+
+Dentro de la función se pueden acceder a variables externas.
+Los parámetros solamente existen dentro de la función no importa si colisiona con otras variables.
+
 ## Funciones
 
 ### Random
 **rnd(max=100, min=0): number**
+
 Devuelve un valor aleatorio entre un mínimo y un máximo (Ambos incluídos)
 ```js
 rnd() // Valor aleatorio entre 0 y 100
@@ -186,14 +233,36 @@ rnd(10, 5) // Valor aleatorio entre 5 y 10
 
 ### Substring
 **substring(str: string, start: number, end?: number): string**
+
 Devuelve parte del String entre start y end o hasta el final del string si el parámetro end es `null` o `undefined`
 ```js
 substring("hola", 2) // "la"
 substring("hola como estas", 2, 7) // "la co"
 ```
 
+### StartsWith
+**startsWith(value: string, search: string): boolean**
+
+Devuelve un boolean que indica si el value empieza con search
+
+```js
+startsWith('hola mundo', 'hola') // true
+startsWith('hola mundo', 'mundo') // false
+```
+
+### EndsWith
+**endsWidth(value: string, search: string): boolean**
+
+Devuelve un boolean que indica si el value termina con search
+
+```js
+endsWith('hola mundo', 'mundo') // true
+endsWith('hola mundo', 'hola') // false
+```
+
 ### ToLowerCase
 **toLowerCase(str: string): string**
+
 Transforma un string todo a minúscula.
 ```js
 toLowerCase("Hola Como Estas") // "hola como estas"
@@ -202,14 +271,27 @@ toLowerCase("HOLA COMO ESTAS") // "hola como estas"
 
 ### toUpperCase
 **toUpperCase(str: string): string**
+
 Transforma un string todo a mayúscula.
 ```js
 toLowerCase("Hola Como Estas") // "HOLA COMO ESTAS"
 toLowerCase("hola como estas") // "HOLA COMO ESTAS"
 ```
 
+### String
+**string(val: any): string** 
+
+Parsea un valor a un string
+
+```js
+string(10) // "10"
+string(true) // "true"
+string("hola") // "hola"
+```
+
 ### Number
 **Number(val: any): number**
+
 Intenta transformar cualquier valor a un número
 Si no lo logra devolverá `NaN` (Not a Number)
 ```js
@@ -219,6 +301,7 @@ Number("hola") // NaN
 ```
 ### Typeof
 **typeof(val: any): string**
+
 Devuelve el tipo de dato del valor dado
 puede devolver: `number`, `string`, `object`, `array`, `boolean`, `undefined`, `function`
 ```js
@@ -232,6 +315,7 @@ typeof(typeof) // "function"
 
 ### IsValid
 **isValid(val: any): boolean**
+
 Devuelve si un valor está definido o no. Es decir, si no es `null` ni `undefined`.
 Se puede utilizar para verificar si un contexto está definido o no.
 ```js
@@ -240,17 +324,9 @@ isValid(0) // true
 isValid() // false
 ```
 
-### String
-**string(val: any): string** 
-Parsea un valor a un string
-
-```js
-string(10) // "10"
-string(true) // "true"
-string("hola") // "hola"
-```
 ### Contains
 **contains(arr: array, value: any): boolean**
+
 Verifica si determinado valor se encuentra en un arreglo
 
 ```js
@@ -260,6 +336,7 @@ contains([1,2,3], 5) // false
 ```
 ### Append
 **append(arr: array, value: any): array**
+
 Devuelve un nuevo arreglo con todos los items del arreglo dado mas el nuevo valor al final
 
 ```js
@@ -268,6 +345,7 @@ append([1,2,3], 4) // [1,2,3,4]
 
 ### Join
 **join(arr: array, separator?: string): array**
+
 Devuelve un string con todos los items del arreglo unidos separados por el separador que se le haya dado
 
 ```js
@@ -278,6 +356,7 @@ join([1,2,3,4], " mas ") // "1 mas 2 mas 3 mas 4"
 
 ### JoinArr
 **joinArr(arr1: array, arr2: array): array**
+
 Une dos arreglos en uno
 
 ```js
@@ -287,11 +366,13 @@ join([1,2,3,4], ["5", "6", "7"]) // [1,2,3,4,"5","6", "7"]
 
 ### Now
 **now(): number**
+
 Devuelve los milisegundos de la fecha y horario actual basado en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
 
 
 ### Date
 **date(value: string | number): number**
+
 Devuelve los milisegundos de una fecha dada basados en la [Epoca ECMAScript](https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range).
 `value` puede ser un string con cualquier formato de fecha.
 ```js
@@ -302,6 +383,7 @@ date('12/17/1995') // 819169200000 (17 de Diciembre de 1995 a las 03:24:00 UTC-0
 
 ### FormatDate
 **formatDate(timestamp: number, format: string): string**
+
 Devuelve un string con el timestamp formateado con el formato dado
 Para establecer el formato se utiliza el standard [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
 
@@ -315,6 +397,7 @@ formatDate(date('1995-12-17T03:24:00'), 'MMMM') // "December"
 
 ### Replace
 **relpace(str: string, replacer:string, newValue: string, regexModifiers?: string ): string**
+
 Devuelve un nuevo remplazando de str las ocurrencias del `replacer` con el `newValue`. El replacer puede ser regex.
 El `regexModifiers` es un string dónde se puede indicar cualquier combinación de un [regex flag](https://www.codeguage.com/courses/regexp/flags)
 
@@ -330,26 +413,9 @@ replace('Hola chau hola chau hola', 'hola', 'hello', 'i') // "hello chau hola ch
 replace('Hola chau hola chau hola', 'hola', 'hello', 'ig') // "hello chau hello chau hello"
 ```
 
-### StartsWith
-**startsWith(value: string, search: string): boolean**
-Devuelve un boolean que indica si el value empieza con search
-
-```js
-startsWith('hola mundo', 'hola') // true
-startsWith('hola mundo', 'mundo') // false
-```
-
-### EndsWith
-**endsWidth(value: string, search: string): boolean**
-Devuelve un boolean que indica si el value termina con search
-
-```js
-startsWith('hola mundo', 'mundo') // true
-startsWith('hola mundo', 'hola') // false
-```
-
 ### IndexOf
 **indexOf(arr: array, value: any): number**
+
 Devuelve el índice del valor en el arreglo. Si no lo encuentra devuelve -1
 
 ```js
@@ -359,6 +425,7 @@ indexOf([1,2,3], 4) // -1
 
 ### IndexOfStr
 **indexOfStr(str: string, search: string): number**
+
 Devuelve el índice de la primera ocurrencia de search en str. Si no lo encuentra devuelve -1
 
 ```js
@@ -369,6 +436,7 @@ indexOfStr('hola mundo', 'chau') // -1
 
 ### ContainsStr
 **containsStr(str: string, search: string): boolean**
+
 Devuelve un boolean que indica si el str contiene search
 
 ```js
@@ -379,6 +447,7 @@ containsStr('hola mundo', 'chau') // false
 
 ### Keys
 **keys(obj: object): array**
+
 Devuelve un arreglo con todas las keys del objeto
 
 ```js
@@ -386,6 +455,7 @@ keys({a: 1, b: 2, c: 3}) // ["a", "b", "c"]
 ```
 ### Remove
 **remove(arr: array, index: number): array**
+
 Devuelve un nuevo arreglo sin el item en el índice dado
 
 ```js
@@ -395,6 +465,7 @@ remove([1,2,3], 0) // [2,3]
 
 ### RemoveValues
 **removeValues(arr: array, value: any): array**
+
 Devuelve un nuevo arreglo sin los items que coincidan con el valor dado
 
 ```js
@@ -424,4 +495,253 @@ obj2 = {
 
 mergeObj(obj1, obj2) // {foo: 1, bar: "hola mundo", biz: {bar: ":D"}, new: "new value"}
 mergeObj(obj1, obj2, true)  // {foo: 1, bar: "hola mundo", biz: {foo: 3, bar: ":D"}, new: "new value"}
+```
+### ToJSON
+**toJSON(str: string): object**
+
+Parsea un string a un objecto.
+```js
+toJSON('{ "foo": "bar" }') // { "foo": "bar" }
+```
+
+### Find
+**find(arr: array, path: string, value: any): any**
+
+Busca en un arreglo de objetos el primer valor que tenga en el path especificado el mismo valor
+
+```js
+arr = [
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chau'
+		}
+	},
+	{
+		foo: 'holiwis',
+		bar: {
+			baz: 'chauchis'
+		}
+	},
+	{
+		foo: 'holanda',
+		bar: {
+			baz: 'chaucha'
+		}
+	}
+]
+
+find(arr, 'foo', 'holiwis') // { "foo": "holiwis", "bar": { "baz": "chauchis" } }
+find(arr, 'bar.baz', 'chaucha') // { "foo": "holanda", "bar": { "baz": "chaucha" } }
+find(arr, 'pepe', 'jose') // null
+find(arr, 'foo', 'foo') // null
+```
+
+### FindV2
+**findV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item | undefined**
+
+Devuelve el primer elemento que satisfaga la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá `undefined`.
+
+
+El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+
+```js
+arr = [
+	   {
+      "id": 1,
+      "age": 30,
+      "lastName": "Doe",
+      "firstName": "John",
+      "occupation": "Engineer"
+   },
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+   {
+      "id": 3,
+      "age": 40,
+      "lastName": "Johnson",
+      "firstName": "Robert",
+      "occupation": "Doctor"
+   },
+]
+
+findV2(arr, fn(person)(person.lastName == 'Smith'))
+/* Output:
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+*/
+
+findV2(arr, fn(person)(person.lastName == 'Silva')) // Output: undefined
+
+```
+
+
+
+### Filter
+**filter(arr: array, path: string, value: any): any[]**
+
+Devuelve un arreglo con todos los items que matchean en el path el valor especificado
+```js
+arr = [
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chau'
+		}
+	},
+	{
+		foo: 'hola',
+		bar: {
+			baz: 'chauchis'
+		}
+	},
+	{
+		foo: 'holanda',
+		bar: {
+			baz: 'chauchis'
+		}
+	}
+]
+
+find(arr, 'foo', 'hola') // [{ "foo": "hola", "bar": { "baz": "chau" } }, { "foo": "hola", "bar": { "baz": "chauchis" } }]
+find(arr, 'bar.baz', 'chauchis') //  [{ "foo": "hola", "bar": { "baz": "chauchis" } }, { "foo": "holanda", "bar": { "baz": "chauchis" } }]
+find(arr, 'pepe', 'jose') // []
+find(arr, 'foo', 'foo') // []
+```
+### FilterV2 
+**filterV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item[]**
+
+Devuelve un nuevo arreglo con todos los items que satisfagan la función proveida. Si ningún elemento devuelve un valor verdadero entonces la función devolverá un arreglo vacío.
+
+El parametro testFn es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+
+```js
+arr = [
+   {
+      "id": 1,
+      "age": 30,
+      "lastName": "Doe",
+      "firstName": "John",
+      "occupation": "Engineer"
+   },
+   {
+      "id": 2,
+      "age": 25,
+      "lastName": "Smith",
+      "firstName": "Jane",
+      "occupation": "Teacher"
+   },
+   {
+      "id": 3,
+      "age": 40,
+      "lastName": "Johnson",
+      "firstName": "Robert",
+      "occupation": "Doctor"
+   },
+   {
+      "id": 4,
+      "age": 22,
+      "lastName": "Williams",
+      "firstName": "Emily",
+      "occupation": "Student"
+   },
+   {
+      "id": 5,
+      "age": 35,
+      "lastName": "Brown",
+      "firstName": "Michael",
+      "occupation": "Marketing Manager"
+   }
+]
+
+filterV2(arr, fn(person)(person.age > 25))
+/* Output:
+[
+  {
+    "id": 1,
+    "age": 30,
+    "lastName": "Doe",
+    "firstName": "John",
+    "occupation": "Engineer"
+  },
+  {
+    "id": 3,
+    "age": 40,
+    "lastName": "Johnson",
+    "firstName": "Robert",
+    "occupation": "Doctor"
+  },
+  {
+    "id": 5,
+    "age": 35,
+    "lastName": "Brown",
+    "firstName": "Michael",
+    "occupation": "Marketing Manager"
+  }
+]
+*/
+```
+
+
+### Map
+**map\<Item>(arr: Item[], parseFunc: (item: Item, index: number, originalArr: Item[]) => any): any[]**
+
+Devuelve un nuevo arreglo con todos los items parseados por la función proveida.
+
+El parametro parseFunc es una función que recibe como primer parámetro el Item que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+```js
+arr = [
+   {
+	  "id": 1,
+	  "age": 30,
+	  "lastName": "Doe",
+	  "firstName": "John",
+	  "occupation": "Engineer"
+   },
+   {
+	  "id": 2,
+	  "age": 25,
+	  "lastName": "Smith",
+	  "firstName": "Jane",
+	  "occupation": "Teacher"
+   },
+   {
+	  "id": 3,
+	  "age": 40,
+	  "lastName": "Johnson",
+	  "firstName": "Robert",
+	  "occupation": "Doctor"
+   },
+   {
+	  "id": 4,
+	  "age": 22,
+	  "lastName": "Williams",
+	  "firstName": "Emily",
+	  "occupation": "Student"
+   },
+   {
+	  "id": 5,
+	  "age": 35,
+	  "lastName": "Brown",
+	  "firstName": "Michael",
+	  "occupation": "Marketing Manager"
+   }
+]
+
+map(arr, fn(person)(person.firstName + ' ' + person.lastName))
+// Output: ["John Doe", "Jane Smith", "Robert Johnson", "Emily Williams", "Michael Brown"]
+
 ```

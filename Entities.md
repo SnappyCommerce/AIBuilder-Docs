@@ -20,6 +20,7 @@ Al intentar acceder a una entidad estas pueden ser un objeto o `undefined`. Una 
 Propiedades:
  - **value**:  Devuelve el valor procesado o el input exacto de lo que puso el usuario. Si es una entidad especial que resuelve en su valor correspondiente, de lo contrario devolverá el input del usuario
  - **literal**: Devuelve el input exacto del usuario.
+ - **literals**: Devuelve un arreglo de strings de los inputs exactos del usuario.
  - **option**: Esta propiedad solo existe en las entidades estáticas. Devuelve el nombre del item de la entidad que coincidió.
  Por Ejemplo: Dada la siguinte entidad ![image](https://user-images.githubusercontent.com/25674513/199063585-c3158218-2516-4e92-923c-c5a9f024b71f.png)
  Si el input del usuario contiene la palabra `camiseta` la propiedad `option` devolverá `remera`
