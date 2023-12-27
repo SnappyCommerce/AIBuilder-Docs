@@ -745,3 +745,24 @@ map(arr, fn(person)(person.firstName + ' ' + person.lastName))
 // Output: ["John Doe", "Jane Smith", "Robert Johnson", "Emily Williams", "Michael Brown"]
 
 ```
+
+### Reduce
+**reduce\<Item, Result>(arr: Item[], reducer: (accumulator: Result, currentValue: Item, index: number, originalArr: Item[]) => Result, initialValue?: Result): Result**
+
+Este método ejecuta una función reductora sobre cada elemento de un array, devolviendo com resultado un único valor.
+
+El parametro `reducer` es una función que recibe como primer parámetro el acumulador, como segundo parámetro el valor actual que se está evaluando del arreglo, el índice del mismo y el arreglo original. 
+
+El parámetro `initialValue` es un valor inicial que se le pasa al acumulador en la primera iteración.
+
+```js
+array1 = [1, 2, 3, 4];
+initialValue = 0;
+
+reduce(array1,
+   fn(accumulator, currentValue)(accumulator + currentValue),
+   initialValue
+);
+// Output: 10
+```
+
