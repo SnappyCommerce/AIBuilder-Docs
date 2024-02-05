@@ -413,6 +413,15 @@ replace('Hola chau hola chau hola', 'hola', 'hello', 'i') // "hello chau hola ch
 replace('Hola chau hola chau hola', 'hola', 'hello', 'ig') // "hello chau hello chau hello"
 ```
 
+### Split
+**split(str: string, separator:string): array**
+
+Devuelve un arreglo con todos los items de `str` separados por el separador dado
+
+```js
+split("hola, como, estas", "," ) // ["hola", " como", " estas"]
+```
+
 ### IndexOf
 **indexOf(arr: array, value: any): number**
 
