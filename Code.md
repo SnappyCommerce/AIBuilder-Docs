@@ -513,6 +513,24 @@ Parsea un string a un objecto.
 toJSON('{ "foo": "bar" }') // { "foo": "bar" }
 ```
 
+### encodeB64
+**encodeB64(str: string): string**
+
+Codifica un string a base64
+
+```js
+encodeB64('hola mundo') // "aG9sYSBtdW5kbw=="
+```
+
+### decodeB64 
+**decodeB64(str: string): string**
+
+Decodifica un string de base64
+
+```js
+decodeB64('aG9sYSBtdW5kbw==') // "hola mundo"
+```
+
 ### Find
 **find(arr: array, path: string, value: any): any**
 
