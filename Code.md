@@ -641,10 +641,10 @@ arr = [
 	}
 ]
 
-find(arr, 'foo', 'hola') // [{ "foo": "hola", "bar": { "baz": "chau" } }, { "foo": "hola", "bar": { "baz": "chauchis" } }]
-find(arr, 'bar.baz', 'chauchis') //  [{ "foo": "hola", "bar": { "baz": "chauchis" } }, { "foo": "holanda", "bar": { "baz": "chauchis" } }]
-find(arr, 'pepe', 'jose') // []
-find(arr, 'foo', 'foo') // []
+filter(arr, 'foo', 'hola') // [{ "foo": "hola", "bar": { "baz": "chau" } }, { "foo": "hola", "bar": { "baz": "chauchis" } }]
+filter(arr, 'bar.baz', 'chauchis') //  [{ "foo": "hola", "bar": { "baz": "chauchis" } }, { "foo": "holanda", "bar": { "baz": "chauchis" } }]
+filter(arr, 'pepe', 'jose') // []
+filter(arr, 'foo', 'foo') // []
 ```
 ### FilterV2 
 **filterV2\<Item>(arr: Item[], testFn: (item: Item, index: number, originalArr: Item[]) => boolean): Item[]**
