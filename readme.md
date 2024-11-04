@@ -23,6 +23,7 @@
 - [Intents](./Intents.md#intents)
 - [Entities](./Entities.md#entities)
 - [Contextos](./Contexts.md#contextos)
+- [Constants](./Constants.md#constantes)
 - [Secrets](./Secrets.md#secrets)
 - [Deploy](./Deploy.md#deploy)
 - [Versions](./Versions.md#versions)
