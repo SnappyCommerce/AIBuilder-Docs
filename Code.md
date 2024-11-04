@@ -6,11 +6,12 @@ Al pasar el mouse por encima de una funcion o variable se mostrará la documenta
 
 Se puede acceder a las distintas variables es con los siguientes prefijos:
 
-|  Variable                 | Prefijo |  Devuelve                                                                       |  Ejemplo               |
-| -----------               | --- | ------------------------------------------------------------------------------- | ---------------------- |
-|  [contexto](./Contexts.md)| `$` |  el valor del contexto                                                          |  `$hola` -> lo que tenga el contexto hola guardado |
-|  [intents](./Intents.md)  | `#` |  valor entre 0 y 1 de la confianza que tuvo (por ahora siempre va a ser 0 o 1)  |  `#saludo` -> 1 si reconoce q es un saludo |
-|  [entity](./Entities.md)  | `@` |  El valor que reconoció como entidad (puede cambiar)                            | `@nombre`-> el nombre que le indicó el usuario |
+|  Variable                    | Prefijo |  Devuelve                                                                       |  Ejemplo                                           |
+| ---                          | ---     | ---                                                                             | ---                                                |
+|  [contexto](./Contexts.md)   | `$`     |  el valor del contexto                                                          |  `$hola` -> lo que tenga el contexto hola guardado |
+|  [constantes](./Constants.md)| `_`     |  El valor de la constante                                                       |  `_const` -> lo que tenga la constante almacenado  |
+|  [intents](./Intents.md)     | `#`     |  valor entre 0 y 1 de la confianza que tuvo (por ahora siempre va a ser 0 o 1)  |  `#saludo` -> 1 si reconoce q es un saludo         |
+|  [entity](./Entities.md)     | `@`     |  El valor que reconoció como entidad (puede cambiar)                            | `@nombre`-> el nombre que le indicó el usuario     |
 
 ## Objetos
 Se puede acceder a las propiedades de un objeto mediante el operador `.` entre dos identificadores.
